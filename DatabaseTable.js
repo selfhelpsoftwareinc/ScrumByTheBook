@@ -4,10 +4,16 @@ class DatabaseTable {
     static keyColumn = '';
     static instances = undefined;
     static tableName = this.name;
+    static columns = [];
 
     static getTableName() {
         return this.name;
     }
+
+    static getKeyColumn() {
+        return this.columns[0];
+    }
+
     static allInstances() {
         if (!this.isLoaded) {
             this.loadFromDatabase();
@@ -41,6 +47,7 @@ class DatabaseTable {
         if (this.isLoaded) {
             return instances.get(value);
         }
-        return Database.loadAllForClassWhere(this, this.keyColumn, value).get(value);
+        return Database.loadAllForClassWhere(this, this.getKeyColumn(), value).get(value);
     }
+
 }
