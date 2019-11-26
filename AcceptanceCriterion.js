@@ -4,7 +4,6 @@ class AcceptanceCriterion extends DatabaseTable {
     isAccepted = false;
     backlogItemID = undefined;
   
-    static keyColumn = 'ID';
     static columns = [
         'ID', 
         'Description', 

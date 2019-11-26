@@ -5,8 +5,6 @@ class CardSort extends DatabaseTable {
     transitionStartStateName = undefined;
     transitionActionName = undefined;
 
-
-    static keyColumn = 'Name';
     static columns = [
         'Name', 
         'IsTransition', 

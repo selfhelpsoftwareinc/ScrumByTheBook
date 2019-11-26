@@ -3,7 +3,6 @@ class Sprint extends DatabaseTable {
     startDate = undefined;
     duration = undefined;
 
-    static keyColumn = 'ID';
     static columns = [
         'ID',
         'StartDate', 

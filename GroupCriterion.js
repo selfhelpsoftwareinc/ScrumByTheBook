@@ -6,7 +6,6 @@ class GroupCriterion extends DatabaseTable {
     level = undefined;
     stateName = undefined;
 
-    static keyColumn = 'Name';
     static columns = [
         'Name', 
         'IsLevel', 

@@ -6,8 +6,6 @@ class CardLayout extends DatabaseTable {
 
     static lines = new Map();
 
-
-    static keyColumn = 'Numbers';
     static columns = [
         'Numbers', 
         'Name'

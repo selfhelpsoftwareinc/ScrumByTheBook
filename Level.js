@@ -3,7 +3,6 @@ class Level extends DatabaseTable {
     name = '';
     color = undefined;
 
-    static keyColumn = 'Number';
     static columns = [
         'Number', 
         'Name', 

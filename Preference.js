@@ -2,7 +2,6 @@ class Preference extends DatabaseTable {
     preferenceType = '';
     preference = undefined;
 
-    static keyColumn = 'PreferenceType';
     static columns = [
         'PreferenceType',
         'Preference'

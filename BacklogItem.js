@@ -11,10 +11,8 @@ class BacklogItem extends DatabaseTable {
     acceptanceCriteria = new Map();
     parentBLI = undefined;
     children = new Map();
-
-    // history = new BLIChangeHistory;
-
-    static keyColumn = 'ID';
+    history = undefined;
+    
     static columns = [
         'ID', 
         'Priority',

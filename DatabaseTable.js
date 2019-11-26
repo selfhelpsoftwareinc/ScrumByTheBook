@@ -1,7 +1,6 @@
 class DatabaseTable {
     static isLoaded = false;
     static columnFunctionMappings;
-    static keyColumn = '';
     static instances = undefined;
     static tableName = this.name;
     static columns = [];
