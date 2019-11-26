@@ -3,7 +3,6 @@ class SprintToBLIMapping extends DatabaseTable {
     sprintID = undefined;
     backlogItemID = undefined;
 
-    static keyColumn = 'SprintToBLIMappingID';
     static columns = [
         'SprintToBLIMappingID',
         'SprintID', 

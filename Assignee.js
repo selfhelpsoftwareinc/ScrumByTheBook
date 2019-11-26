@@ -6,8 +6,6 @@ class Assignee extends DatabaseTable {
     emailAddress = '';
     color = undefined;
 
-    static keyColumn = 'ID';
-
     static columns = [
         'ID', 
         'FirstName', 

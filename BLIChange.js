@@ -4,9 +4,7 @@ class BLIChange extends DatabaseTable {
     stateName = undefined
     state = undefined;
     backlogItemID = undefined;
-
-    static keyColumn = 'ID';
-
+    
     static columns = [
         'ID', 
         'Date', 

@@ -2,7 +2,6 @@ class SystemConstant extends DatabaseTable {
     systemValueType = '';
     systemValue = undefined;
 
-    static keyColumn = 'SystemValueType';
     static columns = [
         'SystemValueType', 
         'SystemValue', 

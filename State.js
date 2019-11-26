@@ -5,7 +5,6 @@ class State extends DatabaseTable {
     includeInPipeline = false;
     includeInVelocity = false;
 
-    static keyColumn = 'Name';
     static columns = [
         'Name', 
         'Color', 

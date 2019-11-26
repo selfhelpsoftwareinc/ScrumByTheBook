@@ -1,8 +1,6 @@
 class Action extends DatabaseTable {
     name = '';
     extraChecksNeeded = false;
-
-    static keyColumn = 'Name';
     
     static columns = [
         'Name', 

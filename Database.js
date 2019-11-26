@@ -4,7 +4,7 @@ class Database {
         var records = this.allRecordsFrom(aClass.getTableName());
         for (var eachRecord of records) {
             var instance = this.instantiateFrom(aClass, eachRecord);
-            var keyColumn = aClass.keyColumn;
+            var keyColumn = aClass.getKeyColumn();
             map.set(eachRecord.at(keyColumn), instance);
         }
         return map;

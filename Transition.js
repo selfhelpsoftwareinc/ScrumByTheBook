@@ -3,7 +3,6 @@ class Transition extends DatabaseTable {
     startPath = [];
     endState = '';
 
-    static keyColumn = 'StartPath';
     static columns = [
         'StartPath', 
         'EndState'
