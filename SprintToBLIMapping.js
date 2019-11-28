@@ -49,9 +49,21 @@ class SprintToBLIMapping extends DatabaseTable {
         var bliIDs = this.sprintToBLIMap.get(sprintID);
         var answer = [];
         for (var bliID of bliIDs) {
-            
+            answer.push(BacklogItem.whereKeyIs(bliID));
         }
-        return BacklogItem.allWhere('BacklogItemID', )
+        return answer;
+    }
+
+    static getSprintsFor(backlogItemID) {
+        if (!this.isLoaded) {
+            this.loadFromDatabase();
+        }
+        var sprintIDs = this.bliToSprintMap.get(backlogItemID);
+        var answer = [];
+        for (var sprintID of sprintIDs) {
+            answer.push(Sprint.whereKeyIs(sprintID));
+        }
+        return answer;
     }
 
     setSprintToBLIMappingID(aNumber) {
