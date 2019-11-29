@@ -1,0 +1,8 @@
+{
+    "editor.fontSize": 11,
+    "vscode-janus-debug.uploadOnSave": [
+        "BacklogItem"
+    ],
+    "workbench.settings.openDefaultSettings": true,
+    "liveServer.settings.CustomBrowser": "chrome"
+}
