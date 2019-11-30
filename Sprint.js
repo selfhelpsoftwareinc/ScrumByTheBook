@@ -2,6 +2,7 @@ class Sprint extends DatabaseTable {
     id = '';
     startDate = undefined;
     duration = undefined;
+    backlogItems = [];
 
     static columns = [
         'ID',
@@ -15,6 +16,7 @@ class Sprint extends DatabaseTable {
 
     setID(aString) {
         this.id = aString;
+        this.loadBacklogItems();
     }
 
     setStartDate(aString) {
@@ -23,5 +25,9 @@ class Sprint extends DatabaseTable {
 
     setDuration(aNumber) {
         this.duration = aNumber;
+    }
+
+    loadBacklogItems(){
+        this.backlogItems = SprintToBLIMapping.getBLIsFor(this.id);
     }
 }
