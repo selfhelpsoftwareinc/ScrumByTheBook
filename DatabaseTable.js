@@ -21,7 +21,7 @@ class DatabaseTable {
     }
     static loadFromDatabase() {
         this.instances = Database.loadAllForClass(this);
-        this.isLoaded = true;
+        this.isLoaded = true;    
     }
 
     static allWhere(columnName, value) {
@@ -44,7 +44,7 @@ class DatabaseTable {
     }
     static whereKeyIs(value) {
         if (this.isLoaded) {
-            return instances.get(value);
+            return this.instances.get(value);
         }
         return Database.loadAllForClassWhere(this, this.getKeyColumn(), value).get(value);
     }
