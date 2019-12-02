@@ -34,23 +34,29 @@ class DatabaseTable {
         this.isLoaded = true;    
     }
 
+    static getterFunctionFor(columnName) {
+        var getterName = 'get' + columnName;
+        var getterFunction = this.prototype[getterName];
+        if (getterFunction == undefined) {
+            console.log("Getter function undefined for " + this.name + " function: " + getterName)
+
+        }
+        return getterFunction;
+    }
+
     static allWhere(columnName, value) {
-        if (this.isLoaded) {
-            var getterName = 'get' + columnName;
-            var answer = [];
-            var getterFunction = this.prototype[getterName];
-            if (getterFunction != undefined) {
-                for (var instance of this.instances.values()) {
-                    if (value == getterFunction.call(instance)) {
-                        answer.push(instance);
-                    }
-                }
-                return answer;
-            } else {
-                console.log("Getter function undefined for " + this.name + " function: " + getterName)
+        if (!this.isLoaded) {
+            this.loadFromDatabase();
+        }
+        var answer = [];
+        var getterFunction = this.getterFunctionFor(columnName);
+        for (var instance of this.instances.values()) {
+            if (value == getterFunction.call(instance)) {
+                answer.push(instance);
             }
         }
-        return Database.loadAllForClassWhere(this, columnName, value);
+        return answer;
+
     }
     static whereKeyIs(value) {
         if (!this.isLoaded) {
