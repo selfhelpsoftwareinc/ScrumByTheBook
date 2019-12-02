@@ -1,9 +1,7 @@
 class DatabaseTable {
-    static isLoaded = false;
-    static columnFunctionMappings;
-    static instances = null;
-    static tableName = this.name;
-    static columns = [];
+    static isLoaded = false;  //Boolan for whether we have done an initial load from the databas
+    static instances = null;  // Map of all of our instances, keyed by the keyColumn
+    static columns = [];  // Array of all the column names (Strings) in the table
 
     static getTableName() {
         return this.name;
