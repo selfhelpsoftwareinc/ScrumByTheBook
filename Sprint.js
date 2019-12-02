@@ -16,7 +16,6 @@ class Sprint extends DatabaseTable {
 
     setID(aString) {
         this.id = aString;
-        this.loadBacklogItems();
     }
 
     setStartDate(aString) {
@@ -27,7 +26,14 @@ class Sprint extends DatabaseTable {
         this.duration = aNumber;
     }
 
+    /* This may not get used, since the BLI's call #addBacklogItem() when 
+     * they loadSprints()
+     */
     loadBacklogItems(){
         this.backlogItems = SprintToBLIMapping.getBLIsFor(this.id);
+    }
+
+    addBacklogItem(aBacklogItem) {
+        this.backlogItems.push(aBacklogItem);
     }
 }

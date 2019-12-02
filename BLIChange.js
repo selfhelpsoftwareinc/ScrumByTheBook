@@ -27,5 +27,8 @@ class BLIChange extends DatabaseTable {
     setBacklogItemID(aNumber) {
         this.backlogItemID = aNumber;
     }
+    getBacklogItemID() {
+        return this.backlogItemID;
+    }
 
 }
