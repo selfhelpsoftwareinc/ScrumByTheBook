@@ -1,10 +1,28 @@
 class DatabaseTable {
-    static isLoaded = false;  //Boolan for whether we have done an initial load from the databas
-    static instances = null;  // Map of all of our instances, keyed by the keyColumn
-    static columns = [];  // Array of all the column names (Strings) in the table
+    /**
+     * Indicates whether we have done an initial load from the database
+     * @protected
+     * @type {Boolean}
+     */
+    static isLoaded = false; 
 
     /**
-     * Returns the name of the database table
+     * Holds onto all of the class' instances, both loaded from the database and
+     * added later.
+     * @type {Map} Keyed by the value of the instance's keyColumn
+     */
+    static instances = null;  
+
+    /**
+     * Holds all of the column names that are mapped to the database table
+     * for this class.
+     * @constant
+     * @type {Array} Each array element is a string column name.
+     */
+    static columns = []; 
+
+    /**
+     * Returns the name of the database table.
      * @returns {string}  The name of the database table, which defaults to the class name
      */
     static get tableName() {
@@ -19,12 +37,26 @@ class DatabaseTable {
         return this.columns[0];
     }
 
+    /**
+     * Returns all of the instances of the class as loaded from the database.
+     * Only loads from the database if not already loaded.
+     * @returns {Map} All of the instances loaded from the databse, keyed by the 
+     *                value of each instance's keyColumn.
+     */
     static allInstances() {
         if (!this.isLoaded) {
             this.loadFromDatabase();
         }
         return this.instances;
     }
+
+    /**
+     * Load all of the instances from the database into the instances Map.
+     * If the instances Map already contains an instance matching the value
+     * of the database instance's keyColumn, do not overwrite it from the database.
+     * After loading, set isLoaded to true.
+     * @private
+     */
     static loadFromDatabase() {
         var newInstances = Database.loadAllForClass(this);
         if (this.instances === null) {
@@ -40,6 +72,15 @@ class DatabaseTable {
         this.isLoaded = true;    
     }
 
+    /**
+     * Create a function name from get + the columnName and return that function,
+     * if it exists in the class' prototype.  This is used to access values of a
+     * DatabaseTable subclass when all we know is the columnName.
+     * Logs a message to the console if the function is not found in the prototype.
+     * @todo throw an error instead of logging to the console
+     * @param {String} columnName 
+     * @returns {function get+columnName() {}}
+     */
     static getterFunctionFor(columnName) {
         var getterName = 'get' + columnName;
         var getterFunction = this.prototype[getterName];
@@ -50,6 +91,17 @@ class DatabaseTable {
         return getterFunction;
     }
 
+    /**
+     * Search through the instances loaded from the database (and/or created since loading)
+     * to find all instances where the value of evaluating a getter function based on columnName
+     * matches value.
+     * Load all instances if not already loaded.
+     * @todo Figure out how to get a subset of instances from the database that match the search
+     * criteria without overwriting any items already loaded.
+     * @param {String} columnName 
+     * @param {Object} value 
+     * @returns {Array} of instances matching the value for that columnName.
+     */
     static allWhere(columnName, value) {
         if (!this.isLoaded) {
             this.loadFromDatabase();
@@ -64,6 +116,18 @@ class DatabaseTable {
         return answer;
 
     }
+
+    /**
+     * Answer a single instance of the class whose value at its keyColumn matches
+     * value.  Since instances are stored in a Map keyed by keyColumn, this is a simple
+     * get operation from that Map.
+     * Load all instances if not already loaded.
+     * @todo Figure out how to get a single instance from the database into instances
+     * without loading all of them, and without overwriting any matching object already
+     * in the instances Map.
+     * @param {Object} value the value to match to the loaded instance's keyColumn value
+     * @returns {DatabaseTable} an instance of the subclass on which this method is called.
+     */
     static whereKeyIs(value) {
         if (!this.isLoaded) {
             this.loadFromDatabase();
