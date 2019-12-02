@@ -1,7 +1,7 @@
 class DatabaseTable {
     static isLoaded = false;
     static columnFunctionMappings;
-    static instances = undefined;
+    static instances = null;
     static tableName = this.name;
     static columns = [];
 
@@ -20,7 +20,17 @@ class DatabaseTable {
         return this.instances;
     }
     static loadFromDatabase() {
-        this.instances = Database.loadAllForClass(this);
+        var newInstances = Database.loadAllForClass(this);
+        if (this.instances === null) {
+            this.instances = newInstances;
+        } else {
+            for (var [key, value] of newInstances) {
+                if (!this.instances.has(key)) {
+                    this.instances.set(key, value);
+                }
+            }
+        }
+
         this.isLoaded = true;    
     }
 
@@ -37,16 +47,16 @@ class DatabaseTable {
                 }
                 return answer;
             } else {
-                console.log("Getter function undefined for " + this.name + "function: " + getterName)
+                console.log("Getter function undefined for " + this.name + " function: " + getterName)
             }
         }
         return Database.loadAllForClassWhere(this, columnName, value);
     }
     static whereKeyIs(value) {
-        if (this.isLoaded) {
-            return this.instances.get(value);
+        if (!this.isLoaded) {
+            this.loadFromDatabase();
         }
-        return Database.loadAllForClassWhere(this, this.getKeyColumn(), value).get(value);
+        return this.instances.get(value);
     }
 
 }
