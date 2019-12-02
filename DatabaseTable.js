@@ -1,3 +1,10 @@
+/**
+ * The superclass of all ScrumByTheBook classes that will be stored in the database.
+ * Allows for the generic retrieval and storage of instances from/to the database,
+ * and matches column names to those of the class' database table.
+ * Stores all of the class' instances in a Map (keyed by the class' keyColumn value)
+ * to enable quick access to the instances. 
+ */
 class DatabaseTable {
     /**
      * Indicates whether we have done an initial load from the database
@@ -16,7 +23,7 @@ class DatabaseTable {
     /**
      * Holds all of the column names that are mapped to the database table
      * for this class.
-     * @constant
+     * @constant columns overridden by each subclass
      * @type {Array} Each array element is a string column name.
      */
     static columns = []; 
@@ -80,6 +87,7 @@ class DatabaseTable {
      * @todo throw an error instead of logging to the console
      * @param {String} columnName 
      * @returns {function get+columnName() {}}
+     * @private
      */
     static getterFunctionFor(columnName) {
         var getterName = 'get' + columnName;
