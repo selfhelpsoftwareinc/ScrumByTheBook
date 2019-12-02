@@ -75,7 +75,10 @@ class BacklogItem extends DatabaseTable {
         this.acceptanceCriteria = AcceptanceCriterion.allFor(this);
     }
     loadSprints() {
-
+        this.sprints = SprintToBLIMapping.getSprintsFor(this.id);
+        for (var sprint of this.sprints) {
+            sprint.addBacklogItem(this);
+        }
     }
 
     setParentBLI(aBLI) {
