@@ -1,10 +1,10 @@
 class Database {
     static loadAllForClass(aClass) {
         var map = new Map();
-        var records = this.allRecordsFrom(aClass.getTableName());
+        var records = this.allRecordsFrom(aClass.tableName);
         for (var eachRecord of records) {
             var instance = this.instantiateFrom(aClass, eachRecord);
-            var keyColumn = aClass.getKeyColumn();
+            var keyColumn = aClass.keyColumn;
             map.set(eachRecord.at(keyColumn), instance);
         }
         return map;
@@ -13,10 +13,10 @@ class Database {
     static loadAllForClassWhere(aClass, aColumnName, aValue) {
         // This will be done with a SQL Where statement ultimately.
         var map = new Map();
-        var records = this.allRecordsWhere(aClass.getTableName(), aColumnName, aValue);
+        var records = this.allRecordsWhere(aClass.tableName, aColumnName, aValue);
         for (var eachRecord of records) {
             var instance = this.instantiateFrom(aClass, eachRecord);
-            var keyColumn = aClass.getKeyColumn();
+            var keyColumn = aClass.keyColumn;
             map.set(eachRecord.at(keyColumn), instance);
         }
         return map;
