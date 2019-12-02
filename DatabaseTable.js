@@ -3,11 +3,19 @@ class DatabaseTable {
     static instances = null;  // Map of all of our instances, keyed by the keyColumn
     static columns = [];  // Array of all the column names (Strings) in the table
 
-    static getTableName() {
+    /**
+     * Returns the name of the database table
+     * @returns {string}  The name of the database table, which defaults to the class name
+     */
+    static get tableName() {
         return this.name;
     }
 
-    static getKeyColumn() {
+    /**
+     * Returns the name of the column that functions as the table's key.
+     * @returns {string} The name of the key column, which defaults to the first column name
+     */
+    static get keyColumn() {
         return this.columns[0];
     }
 
