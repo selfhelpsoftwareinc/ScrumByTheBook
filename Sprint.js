@@ -2,7 +2,7 @@ class Sprint extends DatabaseTable {
     id = '';
     startDate = undefined;
     duration = undefined;
-    backlogItems = null;
+    backlogItems = [];
 
     static columns = [
         'ID',
@@ -43,5 +43,12 @@ class Sprint extends DatabaseTable {
             this.loadBacklogItems();
         }
         return this.backlogItems;
+    }
+
+    addBacklogItem(aBacklogItem) {
+        // if (this.backlogItems === null) {
+        //     this.backlogItems = [];
+        // }
+        this.backlogItems.push(aBacklogItem);
     }
 }
