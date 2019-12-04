@@ -50,7 +50,7 @@ class DatabaseTable {
 
     /**
      * Returns the name of the column that functions as the table's key.
-     * @returns {string} The name of the key column, which defaults to the first column name
+     * @returns {String} The name of the key column, which defaults to the first column name
      */
     static get keyColumn() {
         return this.columns[0];
@@ -98,7 +98,7 @@ class DatabaseTable {
      * Logs a message to the console if the function is not found in the prototype.
      * @todo throw an error instead of logging to the console
      * @param {String} columnName 
-     * @returns {function get+columnName() {}}
+     * @returns {Function get+columnName() {}}
      * @private
      */
     static getterFunctionFor(columnName) {
