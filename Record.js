@@ -1,21 +1,85 @@
+/**
+ * The Record class interfaces with the SQL (or other) database.
+ * An individual record organizes all of the values for a given
+ * record in a given table into a Map, keyed by column name.
+ * 
+ * For initial testing purposes, rather than going to an actual
+ * database, Record creates an Array of dummy records.  When asked
+ * for all of the records for a given table, Record will initially
+ * return all of these dummy records.
+ * 
+ * @todo Retrieve records from an actual database
+ */
 class Record {
+    /**
+     * @type {Map} all of the values for a single record of a table,
+     * keyed by column name.
+     */
     values = new Map();
 
+    /**
+     * Create an instance of Record with its values set to a Map
+     * constructed from anArrayOfArrays.
+     * @param {Array of Arrays} anArrayOfArrays Each inner Array contains
+     * key-value pairs, where the key is a string corresponding to a 
+     * column name.
+     */
     constructor(anArrayOfArrays) {
         this.values = new Map(anArrayOfArrays);
     }
 
+    /**
+     * Create and return an Array of all of the records retrieved that
+     * are stored in the database in the table named tableName
+     * @param {String} tableName The name of the table from which to
+     * retrieve all records
+     * @returns {Array of Records} The Array contains Records for each
+     * of the database records stored in tableName.
+     * @todo Retrieve records using SQL, rather than constructing a
+     * static method name based on the tableName and getting dummy 
+     * records.
+     */
     static recordsFor(tableName) {
-        var recordsFunctionName = "all" + tableName + "Records";
-        var recordsFunction = this[recordsFunctionName];
+        var recordsFunction = this.allRecordsFunctionFor(tableName);
         if (recordsFunction == undefined) {
-            console.log("Undefined Function: " + recordsFunctionName);
             return [];
         } else {
             return recordsFunction.call(this);
         }
     }
 
+    /**
+     * Retrieve and return the static function of Record that, for now,
+     * returns an Array of dummy records to test the DatabseTable subclasses.
+     * @param {String} tableName The (capitalized) name of the table/class
+     * (subclass of DatabaseTable) for which to return records.
+     * @returns {Function} a static function of Record
+     * @todo Remove this method when Record.recordsFor() goes to a real
+     * databse.
+     */
+    static allRecordsFunctionFor(tableName) {
+        var recordsFunctionName = "all" + tableName + "Records";
+        var recordsFunction = this[recordsFunctionName];
+        if (recordsFunction == undefined) {
+            console.log("Undefined Function: " + recordsFunctionName);
+        }
+        return recordsFunction;
+    }
+
+    /**
+     * Retrieve and return an array of select records from the database
+     * table tableName where the value in the database for columnName matches
+     * value. 
+     * @param {String} tableName The name of the table from which to retrieve
+     * records
+     * @param {String} columnName The name of the column in which to search
+     * for the value 
+     * @param {Object} value The value to match to the values in columnName
+     * to satisfy the query.
+     * @returns {Array of Records} containing records matching the search 
+     * criteria.
+     * @todo This will be done with a SQL Where statement ultimately.
+     */
     static recordsWhere(tableName, columnName, value) {
         var answer = [];
         var all = this.recordsFor(tableName);
@@ -26,6 +90,13 @@ class Record {
         }
         return answer;
     }
+
+    /**
+     * Dummy method: create and return an array of dummy BacklogItem records
+     * @returns {Array of Records} where each record's values is a Map where
+     * the key is a columnName for BacklogItem, and the value is a dummy value
+     * for that columnName.
+     */
     static allBacklogItemRecords() {
         var records = [];
         records.push(new Record([
@@ -51,6 +122,12 @@ class Record {
         return records;
     }
 
+    /**
+     * Dummy method: create and return an array of dummy SprintToBLIMapping records
+     * @returns {Array of Records} where each record's values is a Map where
+     * the key is a columnName for SprintToBLIMapping, and the value is a dummy value
+     * for that columnName.
+     */
     static allSprintToBLIMappingRecords() {
         var records = [];
         records.push(new Record([
@@ -71,6 +148,12 @@ class Record {
         return records;
     }
  
+    /**
+     * Dummy method: create and return an array of dummy SystemConstant records
+     * @returns {Array of Records} where each record's values is a Map where
+     * the key is a columnName for SystemConstant, and the value is a dummy value
+     * for that columnName.
+     */
     static allSystemConstantRecords() {
         var records = [];
         records.push(new Record([
@@ -94,6 +177,13 @@ class Record {
         return records;
 
     }
+ 
+     /**
+     * Dummy method: create and return an array of dummy Preference records
+     * @returns {Array of Records} where each record's values is a Map where
+     * the key is a columnName for Preference, and the value is a dummy value
+     * for that columnName.
+     */
     static allPreferenceRecords() {
         var records = [];
         records.push(new Record([
@@ -123,6 +213,12 @@ class Record {
         return records;
     }
 
+     /**
+     * Dummy method: create and return an array of dummy Level records
+     * @returns {Array of Records} where each record's values is a Map where
+     * the key is a columnName for Level, and the value is a dummy value
+     * for that columnName.
+     */
     static allLevelRecords() {
         var records = [];
         records.push(new Record([
@@ -160,7 +256,13 @@ class Record {
        return records;
     }
 
-    static allAssigneeRecords() {
+       /**
+     * Dummy method: create and return an array of dummy Assignment records
+     * @returns {Array of Records} where each record's values is a Map where
+     * the key is a columnName for Assignment, and the value is a dummy value
+     * for that columnName.
+     */
+    static allAssigneeRecords() {   
         var records = [];
         records.push(new Record([
             ['ID', 'ASNEE-00'],
@@ -186,6 +288,12 @@ class Record {
         return records;
     }
 
+    /**
+     * Dummy method: create and return an array of dummy AcceptanceCriterion records
+     * @returns {Array of Records} where each record's values is a Map where
+     * the key is a columnName for AcceptanceCriterion, and the value is a dummy value
+     * for that columnName.
+     */
     static allAcceptanceCriterionRecords() {
         var records = [];
         records.push(new Record([
@@ -199,6 +307,12 @@ class Record {
         return records;
     }
 
+    /**
+     * Dummy method: create and return an array of dummy State records
+     * @returns {Array of Records} where each record's values is a Map where
+     * the key is a columnName for State, and the value is a dummy value
+     * for that columnName.
+     */
     static allStateRecords() {
         var records = [];
         records.push(new Record([
@@ -263,6 +377,12 @@ class Record {
             ['IncludeInVelocity', true]]));
         return records;
     }
+    /**
+     * Dummy method: create and return an array of dummy BLIChange records
+     * @returns {Array of Records} where each record's values is a Map where
+     * the key is a columnName for BLIChange, and the value is a dummy value
+     * for that columnName.
+     */
     static allBLIChangeRecords() {
         var records = [];
         records.push(new Record([
@@ -287,6 +407,12 @@ class Record {
             ['BacklogItemID', 'BLI-1']]));
         return records;
     }
+    /**
+     * Dummy method: create and return an array of dummy Action records
+     * @returns {Array of Records} where each record's values is a Map where
+     * the key is a columnName for Action, and the value is a dummy value
+     * for that columnName.
+     */
     static allActionRecords() {
             var records = [];
             records.push(new Record([
@@ -343,8 +469,16 @@ class Record {
             return records;
         }
  
+     /**
+     * Dummy method: create and return an array of dummy Transition records
+     * @returns {Array of Records} where each record's values is a Map where
+     * the key is a columnName for Transition, and the value is a dummy value
+     * for that columnName.
+     */
     static allTransitionRecords() {
         var records = [];
+
+        // All Transitions starting from the Added state...
         records.push(new Record([
             ['StartPath', 'Added-Mark Ready'],
             ['EndState', 'Ready']]));
@@ -358,7 +492,8 @@ class Record {
             ['StartPath', 'Added-Hold'],
             ['EndState', 'On Hold']]));
 
-        records.push(new Record([
+         // All Transitions starting from the Ready state...
+         records.push(new Record([
             ['StartPath', 'Ready-Mark Unready'],
             ['EndState', 'Added']]));
         records.push(new Record([
@@ -374,7 +509,8 @@ class Record {
             ['StartPath', 'Ready-Hold'],
             ['EndState', 'On Hold']]));
 
-        records.push(new Record([
+          // All Transitions starting from the To Do state...
+          records.push(new Record([
             ['StartPath', 'To Do-Unschedule'],
             ['EndState', 'Ready']]));
         records.push(new Record([
@@ -393,7 +529,8 @@ class Record {
             ['StartPath', 'To Do-Mark Unready'],
             ['EndState', 'Added']]));
 
-        records.push(new Record([
+         // All Transitions starting from the Doing state...
+         records.push(new Record([
             ['StartPath', 'Doing-Deactivate'],
             ['EndState', 'To Do']]));
         records.push(new Record([
@@ -415,21 +552,24 @@ class Record {
             ['StartPath', 'Doing-Unschedule'],
             ['EndState', 'Ready']]));
             
-        records.push(new Record([
+          // All Transitions starting from the Done state...
+          records.push(new Record([
             ['StartPath', 'Done-Pass'],
             ['EndState', 'Tested']]));
         records.push(new Record([
             ['StartPath', 'Done-Fail'],
             ['EndState', 'To Do']]));
 
-        records.push(new Record([
+          // All Transitions starting from the Tested state...
+          records.push(new Record([
             ['StartPath', 'Tested-Accept'],
             ['EndState', 'Accepted']]));
         records.push(new Record([
             ['StartPath', 'Tested-Reject'],
             ['EndState', 'To Do']]));
         
-        records.push(new Record([
+          // All Transitions starting from the Blocked state...
+          records.push(new Record([
             ['StartPath', 'Blocked-Unblock'],
             ['EndState', 'Previous']]));
         records.push(new Record([
@@ -439,7 +579,8 @@ class Record {
             ['StartPath', 'Blocked-Hold'],
             ['EndState', 'On Hold']]));
 
-        records.push(new Record([
+         // All Transitions starting from the Hold state...
+         records.push(new Record([
             ['StartPath', 'Hold-Unhold'],
             ['EndState', 'Previous']]));
         records.push(new Record([
@@ -449,13 +590,20 @@ class Record {
             ['StartPath', 'Hold-Block'],
             ['EndState', 'Blocked']]));
 
-        records.push(new Record([
+         // All Transitions starting from the Done state...
+         records.push(new Record([
             ['StartPath', 'Done-Revive'],
             ['EndState', 'Previous']]));
 
         return records;
     }
 
+     /**
+     * Dummy method: create and return an array of dummy GroupCriterion records
+     * @returns {Array of Records} where each record's values is a Map where
+     * the key is a columnName for GroupCriterion, and the value is a dummy value
+     * for that columnName.
+     */
     static allGroupCriterionRecords() {
         var records = [];
         records.push(new Record([
@@ -489,6 +637,12 @@ class Record {
         return records;
     }
     
+     /**
+     * Dummy method: create and return an array of dummy CardSort records
+     * @returns {Array of Records} where each record's values is a Map where
+     * the key is a columnName for CardSort, and the value is a dummy value
+     * for that columnName.
+     */
     static allCardSortRecords() {
         var records = [];
         records.push(new Record([
@@ -511,6 +665,12 @@ class Record {
         return records;
     }
     
+     /**
+     * Dummy method: create and return an array of dummy CardLayout records
+     * @returns {Array of Records} where each record's values is a Map where
+     * the key is a columnName for CardLayout, and the value is a dummy value
+     * for that columnName.
+     */
     static allCardLayoutRecords() {
         var records = [];
         records.push(new Record([
@@ -530,6 +690,13 @@ class Record {
             ['Name', 'Description']]));
         return records;
     }    
+
+    /**
+     * Dummy method: create and return an array of dummy Sprint records
+     * @returns {Array of Records} where each record's values is a Map where
+     * the key is a columnName for Sprint, and the value is a dummy value
+     * for that columnName.
+     */
     static allSprintRecords() {
         var records = [];
         records.push(new Record([
@@ -542,6 +709,12 @@ class Record {
             ['Duration', 14]]));
         return records;
     }    
+ 
+    /**
+     * Find and answer the value in the values Map whose columnName is aColumnName.
+     * @param {String} aColumnName The key in the values Map on which to search.
+     * @returns {Object} The value in the record corresponding to aColumnName
+     */
     at(aColumnName) {
         return this.values.get(aColumnName);
     }
