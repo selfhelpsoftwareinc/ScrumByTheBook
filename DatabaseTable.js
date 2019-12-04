@@ -4,6 +4,18 @@
  * and matches column names to those of the class' database table.
  * Stores all of the class' instances in a Map (keyed by the class' keyColumn value)
  * to enable quick access to the instances. 
+ * 
+ * The following protocol must be followed by all subclasses of DatabaseTable for 
+ * them to function properly:
+ * 
+ * 1. They must set columns to be an array of all column names that get stored 
+ * in the database for the class.  Column names are capitalized.
+ * 2. They must, at a minimum, create instance variables for each of the columns
+ * stored in the database for the class.
+ * 3. They must create instance methods that set each property stored in the 
+ * database.  These must follow the naming pattern "set + ColumnName()".  E.g.,
+ * if a columnName is "Title" the setter method must be called "setTitle()" allowing
+ * the Database class to construct setter methods when instantiating the class.
  */
 class DatabaseTable {
     /**
