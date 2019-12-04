@@ -61,6 +61,7 @@ class Database {
      * @param {Record} aRecord The database record containing the data
      * for the instance.
      * @returns an instance of aClass
+     * @private
      */
     static instantiateFrom(aClass, aRecord) {
         var instance = new aClass();
@@ -80,6 +81,7 @@ class Database {
      * @param {DatabaseClass} aClass // The subclass of DatabaseClase that
      * is having one of its properties set using the setterFunction
      * @returns the function of aClass that sets thre property aColumnName.
+     * @private
      * @todo Invoke a real error if the function is not found, rather than 
      * output to the console.
      */
