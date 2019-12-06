@@ -34,7 +34,7 @@ class AcceptanceCriterion extends DatabaseTable {
   
     /**
      * @type {Array of Strings} As required for all subclasses of DatabaseTable,
-     * an Array all the columnNames stored in the databse for this class.
+     * an Array all the column name strings stored in the databse for this class.
      */
     static columns = [
         'ID', 
