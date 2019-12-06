@@ -34,7 +34,6 @@ var theClasses = [
     SystemConstant, 
     Preference,
     Level,
-    Assignee,
     AcceptanceCriterion,
     BacklogItem, 
     State,
@@ -44,7 +43,8 @@ var theClasses = [
     GroupCriterion,
     CardSort,
     CardLayout,
-    Sprint
+    Sprint,
+    Assignee
 ];
 
 for (var aClass of theClasses) {

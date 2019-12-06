@@ -12,6 +12,7 @@ class BacklogItem extends DatabaseTable {
     parentBLI = undefined;
     children = new Map();
     history = undefined;
+    assignees = undefined;
     
     static columns = [
         'ID', 
@@ -41,6 +42,7 @@ class BacklogItem extends DatabaseTable {
         this.id = aNumber;
         this.loadAcceptanceCriteria();
         this.loadSprints();
+        this.loadAssignees();
     }
 
     setPriority(aNumber) {
@@ -74,10 +76,18 @@ class BacklogItem extends DatabaseTable {
     loadAcceptanceCriteria() {
         this.acceptanceCriteria = AcceptanceCriterion.allFor(this);
     }
+
     loadSprints() {
         this.sprints = SprintToBLIMapping.getSprintsFor(this.id);
         for (var sprint of this.sprints) {
             sprint.addBacklogItem(this);
+        }
+    }
+    
+    loadAssignees() {
+        this.assignees = AssigneeToBLIMapping.getAssigneesFor(this.id);
+        for (var assignee of this.assignees) {
+            assignee.addBacklogItem(this);
         }
     }
 

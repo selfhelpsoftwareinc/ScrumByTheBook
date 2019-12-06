@@ -9,6 +9,7 @@ class Assignee extends DatabaseTable {
     shortName = '';
     emailAddress = '';
     color = undefined;
+    backlogItems = [];
 
     static columns = [
         'ID', 
@@ -43,4 +44,7 @@ class Assignee extends DatabaseTable {
         this.color = anObject;
     }
 
+    addBacklogItem(aBacklogItem) {
+        this.backlogItems.push(aBacklogItem);
+    }
 }
