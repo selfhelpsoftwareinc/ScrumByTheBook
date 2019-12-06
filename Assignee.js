@@ -1,3 +1,7 @@
+/**
+ * The Assignee class represents the person to whom a BacklogItem can be
+ * assinged.
+ */
 class Assignee extends DatabaseTable {
     id = undefined;
     firstName = '';
