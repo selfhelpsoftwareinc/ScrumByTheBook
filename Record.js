@@ -147,7 +147,42 @@ class Record {
         ]));
         return records;
     }
- 
+
+    
+    /**
+     * Dummy method: create and return an array of dummy AssigneeToBLIMapping records
+     * @returns {Array of Records} where each record's values is a Map where
+     * the key is a columnName for AssigneeToBLIMapping, and the value is a dummy value
+     * for that columnName.
+     * Note that this particular example tests a scenario of pair programming, where
+     * there are two assignees per BacklogItem.  It also tests the N-to-N relationship
+     * between Assignees and BacklogItems because ASNEE-01 is assinged to two different
+     * BacklogItems.
+     */
+    static allAssigneeToBLIMappingRecords() {
+        var records = [];
+        records.push(new Record([
+            ['AssigneeToBLIMappingID', 'ATBM-1'],
+            ['AssigneeID', 'ASNEE-00'],
+            ['BacklogItemID', 'BLI-1']
+        ]));
+        records.push(new Record([
+            ['AssigneeToBLIMappingID', 'ATBM-2'],
+            ['AssigneeID', 'ASNEE-01'],
+            ['BacklogItemID', 'BLI-1']
+        ]));
+        records.push(new Record([
+            ['AssigneeToBLIMappingID', 'ATBM-3'],
+            ['AssigneeID', 'ASNEE-01'],
+            ['BacklogItemID', 'BLI-2']
+        ]));
+        records.push(new Record([
+            ['AssigneeToBLIMappingID', 'ATBM-4'],
+            ['AssigneeID', 'ASNEE-02'],
+            ['BacklogItemID', 'BLI-2']
+        ]));
+        return records;
+    }
     /**
      * Dummy method: create and return an array of dummy SystemConstant records
      * @returns {Array of Records} where each record's values is a Map where

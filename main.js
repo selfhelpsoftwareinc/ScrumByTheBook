@@ -30,6 +30,7 @@
 
 var theClasses = [
     SprintToBLIMapping, 
+    AssigneeToBLIMapping, 
     SystemConstant, 
     Preference,
     Level,
