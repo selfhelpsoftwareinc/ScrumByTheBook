@@ -107,6 +107,8 @@ class AcceptanceCriterion extends DatabaseTable {
      * database based on something other than the keyColumn, it is necessary to
      * provide a getter function in the form "get + <foreignKey>".
      * 
+     * See DatabaseTable.allWhere().
+     *  
      * In this case, answer the value of the foreign key "BacklogItemID" so we 
      * can find all of the AcceptanceCriteria for a given BacklogItem.
      * 
