@@ -330,6 +330,7 @@ class BacklogItem extends DatabaseTable {
      * search for all Assignees assigned to a BacklogItem, they need to look for
      * Assignees referencing the BackogItem's ID as a foreign key.  This is an
      * example of a getterFunction constructed in DatabaseTable.getterFunctionFor().
+     * @returns {String} the unique ID of the BacklogItem
      */
     getID() {
         return this.id;
