@@ -63,12 +63,12 @@ class Assignee extends DatabaseTable {
         'Color'
     ];
 
-   /**
+    /**
      * As required for all subclasses of DatabaseTable, a setter function 
      * corresponding to a column name. 
      * In this case, set the id instance variable from the receiver's
      * ID column in the database.
-     * @param {String} aString The unique identifier for this AcceptanceCriterion
+     * @param {String} aString The unique identifier for this Assignee
      */
     setID(aString) {
         this.id = aString;
