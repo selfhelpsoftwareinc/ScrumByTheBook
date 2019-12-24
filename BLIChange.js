@@ -97,7 +97,9 @@ class BLIChange extends DatabaseTable {
     /**
      * For subclasses of DatabaseTable where instances are being retrieved from the 
      * database based on something other than the keyColumn, it is necessary to
-     * provide a getter function in the form "get + <foreignKey>".
+     * provide a getter function in the form "get + <foreignKey>". 
+     * 
+     * See DatabaseTable.allWhere().
      * 
      * In this case, answer the value of the foreign key "BacklogItemID" so we 
      * can find all of the BLIChanges for a given BacklogItem.
