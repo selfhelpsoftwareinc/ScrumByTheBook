@@ -33,7 +33,7 @@ class AssigneeToBLIMapping extends DatabaseTable {
      */
     backlogItemID = '';
 
-   /**
+    /**
      * @type {Array of Strings} As required for all subclasses of DatabaseTable,
      * an Array all the column name strings stored in the databse for this class.
      */
@@ -57,7 +57,7 @@ class AssigneeToBLIMapping extends DatabaseTable {
 
     /**
      * @override Load the records from the database, and also build the two maps:
-     * assingeeTOBLIMap and bliToAssigneeMap.
+     * assingeeToBLIMap and bliToAssigneeMap.
      */
     static loadFromDatabase() {
         super.loadFromDatabase();
@@ -140,15 +140,15 @@ class AssigneeToBLIMapping extends DatabaseTable {
    /**
      * As required for all subclasses of DatabaseTable, a setter function 
      * corresponding to a column name. 
-     * In this case, set the assigneeeTOBLIMappingID instance variable from 
-     * the receiver's AssigneeeTOBLIMappingID column in the database.
-     * @param {String} aString The unique identifier for this AssigneeeTOBLIMapping
+     * In this case, set the assigneeeToBLIMappingID instance variable from 
+     * the receiver's AssigneeeToBLIMappingID column in the database.
+     * @param {String} aString The unique identifier for this AssigneeeToBLIMapping
      */
     setAssigneeToBLIMappingID(aString) {
         this.assigneeToBLIMappingID = aString;
     }
 
-   /**
+    /**
      * As required for all subclasses of DatabaseTable, a setter function 
      * corresponding to a column name. 
      * In this case, set the assigneeeID instance variable from 
