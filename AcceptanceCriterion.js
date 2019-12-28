@@ -34,7 +34,7 @@ class AcceptanceCriterion extends DatabaseTable {
   
     /**
      * @type {Array of Strings} As required for all subclasses of DatabaseTable,
-     * an Array all the columnNames stored in the databse for this class.
+     * an Array all the column name strings stored in the databse for this class.
      */
     static columns = [
         'ID', 
@@ -107,6 +107,8 @@ class AcceptanceCriterion extends DatabaseTable {
      * database based on something other than the keyColumn, it is necessary to
      * provide a getter function in the form "get + <foreignKey>".
      * 
+     * See DatabaseTable.allWhere().
+     *  
      * In this case, answer the value of the foreign key "BacklogItemID" so we 
      * can find all of the AcceptanceCriteria for a given BacklogItem.
      * 

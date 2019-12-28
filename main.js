@@ -42,7 +42,7 @@ var theClasses = [
     Transition,
     GroupCriterion,
     CardSort,
-    CardLayout,
+    CardCell,
     Sprint,
     Assignee
 ];
@@ -55,6 +55,6 @@ for (var aClass of theClasses) {
 
 console.log("LastSprintID: " + SystemConstant.valueAt('LastSprintID'));
 console.log("SprintDuration: " + Preference.preferenceAt('SprintDuration'));
-console.log("CardLayout lines...");
-console.log(CardLayout.lines);
+console.log("CardCell layoutLines...");
+console.log(CardCell.layoutLines);
  

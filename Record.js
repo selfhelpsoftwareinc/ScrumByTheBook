@@ -706,22 +706,22 @@ class Record {
      * the key is a columnName for CardLayout, and the value is a dummy value
      * for that columnName.
      */
-    static allCardLayoutRecords() {
+    static allCardCellRecords() {
         var records = [];
         records.push(new Record([
-            ['Numbers', '01-01'],
+            ['Numbers', '00-00'],
             ['Name', 'Path']]));
         records.push(new Record([
-            ['Numbers', '02-01'],
+            ['Numbers', '01-00'],
             ['Name', 'Title']]));
         records.push(new Record([
-            ['Numbers', '02-02'],
+            ['Numbers', '01-01'],
             ['Name', 'Priority']]));
         records.push(new Record([
-            ['Numbers', '02-03'],
+            ['Numbers', '01-02'],
             ['Name', 'Points']]));
         records.push(new Record([
-            ['Numbers', '03-01'],
+            ['Numbers', '02-00'],
             ['Name', 'Description']]));
         return records;
     }    

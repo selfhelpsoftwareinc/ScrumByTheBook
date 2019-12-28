@@ -114,8 +114,8 @@ class DatabaseTable {
     /**
      * Search through the instances loaded from the database (and/or created since loading)
      * to find all instances where the value of evaluating a getter function based on columnName
-     * matches value.
-     * Load all instances if not already loaded.
+     * matches the value parameter.
+     * Load all instances from the database first, if not already loaded.
      * @todo Figure out how to get a subset of instances from the database that match the search
      * criteria without overwriting any items already loaded.
      * @param {String} columnName 
@@ -141,7 +141,7 @@ class DatabaseTable {
      * Answer a single instance of the class whose value at its keyColumn matches
      * value.  Since instances are stored in a Map keyed by keyColumn, this is a simple
      * get operation from that Map.
-     * Load all instances if not already loaded.
+     * Load all instances from the database first, if not already loaded.
      * @todo Figure out how to get a single instance from the database into instances
      * without loading all of them, and without overwriting any matching object already
      * in the instances Map.
