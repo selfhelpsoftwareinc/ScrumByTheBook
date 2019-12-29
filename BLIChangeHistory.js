@@ -40,4 +40,53 @@ class BLIChangeHistory {
     // set points(aNumber) {
     //     this.points = aNumber;
     // }
+
+    /**
+     * Answer the most recent change, if there is one; otherwise answer null
+     * @returns {BLIChange}
+     */
+    lastChange() {
+        var numChanges = this.changes.size;
+        if (numChanges = 0) {
+            return null;
+        }
+        return (this.changes[numChanges - 1]);
+    }
+
+    /**
+     * Answer the most recent state, if there are any changes; otherwise
+     * answer null.
+     * @returns {State}
+     */
+    lastState() {
+        var lastChange = this.lastChange();
+        if (lastChange == null) {
+            return null
+        }
+        return lastChange.state;
+    }
+
+    /**
+     * Answer whether or not the most recent state is past the "Doing" state;
+     * i.e., if it is Done, Tested or Accepted.
+     * @returns {Boolean}
+     */
+    isComplete() {
+        var lastState = this.lastState();
+        if (lastState == null) {
+            return false;
+        }
+        return lastState.isComplete();
+    }
+
+    /**
+     * Answer the number of points for this BLIChangeHistory if we are in
+     * a complete state, else answer 0.
+     */
+    pointsComplete() {
+        if (this.isComplete()) {
+            return this.points;
+        }
+        return 0;
+    }
 }

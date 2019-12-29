@@ -121,4 +121,19 @@ class State extends DatabaseTable {
         this.includeInVelocity = aBoolean;
     }
 
+    /**
+     * Answer whether or not this state constitutes a completed state
+     * for a BacklogItem.  A BacklogItem is complete if its state is
+     * Done, Tested, or Accepted.
+     * @returns {Boolean}
+     */
+    isComplete() {
+        var isComplete = (
+            (this.name == 'Done') || 
+            (this.name == 'Accepted') ||
+            (this.name == 'Tested')
+        );
+        return isComplete;
+    }
+
 }
