@@ -351,61 +351,61 @@ class Record {
     static allStateRecords() {
         var records = [];
         records.push(new Record([
-            ['Name', 'Dead'],
+            ['Name', State.ValidStates.DEAD],
             ['Color', 'red'],
             ['Include', true],
             ['IncludeInPipeline', false],
             ['IncludeInVelocity', false]]));
         records.push(new Record([
-            ['Name', 'Blocked'],
+            ['Name', State.ValidStates.BLOCKED],
             ['Color', 'orange'],
             ['Include', true],
             ['IncludeInPipeline', false],
             ['IncludeInVelocity', false]]));
         records.push(new Record([
-            ['Name', 'On Hold'],
+            ['Name', State.ValidStates.ONHOLD],
             ['Color', 'yellow'],
             ['Include', true],
             ['IncludeInPipeline', false],
             ['IncludeInVelocity', false]]));
         records.push(new Record([
-            ['Name', 'Added'],
+            ['Name', State.ValidStates.ADDED],
             ['Color', 'chartruese'],
             ['Include', true],
             ['IncludeInPipeline', true],
             ['IncludeInVelocity', false]]));
         records.push(new Record([
-            ['Name', 'Ready'],
+            ['Name', State.ValidStates.READY],
             ['Color', 'green'],
             ['Include', true],
             ['IncludeInPipeline', true],
             ['IncludeInVelocity', false]]));
         records.push(new Record([
-            ['Name', 'To Do'],
+            ['Name', State.ValidStates.TODO],
             ['Color', 'aqua'],
             ['Include', true],
             ['IncludeInPipeline', true],
             ['IncludeInVelocity', false]]));
         records.push(new Record([
-            ['Name', 'Doing'],
+            ['Name', State.ValidStates.DOING],
             ['Color', 'cyan'],
             ['Include', true],
             ['IncludeInPipeline', true],
             ['IncludeInVelocity', false]]));
         records.push(new Record([
-            ['Name', 'Done'],
+            ['Name', State.ValidStates.DONE],
             ['Color', 'blue'],
             ['Include', true],
             ['IncludeInPipeline', false],
             ['IncludeInVelocity', true]]));
         records.push(new Record([
-            ['Name', 'Tested'],
+            ['Name', State.ValidStates.TESTED],
             ['Color', 'indigo'],
             ['Include', true],
             ['IncludeInPipeline', false],
             ['IncludeInVelocity', true]]));
         records.push(new Record([
-            ['Name', 'Accepted'],
+            ['Name', State.ValidStates.ACCEPTED],
             ['Color', 'violet'],
             ['Include', true],
             ['IncludeInPipeline', false],
@@ -423,22 +423,22 @@ class Record {
         records.push(new Record([
             ['ID', 'BLIC-01'],
             ['Date', '2019/12/07'],
-            ['StateName', 'Added'],
+            ['StateName', State.ValidStates.ADDED],
             ['BacklogItemID', 'BLI-1']]));
         records.push(new Record([
             ['ID', 'BLIC-02'],
             ['Date', '2019/12/08'],
-            ['StateName', 'Ready'],
+            ['StateName', State.ValidStates.READY],
             ['BacklogItemID', 'BLI-1']]));
         records.push(new Record([
             ['ID', 'BLIC-03'],
             ['Date', '2019/12/09'],
-            ['StateName', 'To Do'],
+            ['StateName', State.ValidStates.TODO],
             ['BacklogItemID', 'BLI-1']]));
         records.push(new Record([
             ['ID', 'BLIC-04'],
             ['Date', '2019/12/10'],
-            ['StateName', 'Doing'],
+            ['StateName', State.ValidStates.DOING],
             ['BacklogItemID', 'BLI-1']]));
         return records;
     }
@@ -451,55 +451,55 @@ class Record {
     static allActionRecords() {
             var records = [];
             records.push(new Record([
-                ['Name', 'Add'],
+                ['Name', Action.ValidActions.ADD],
                 ['ExtraChecksNeeded', false]]));
             records.push(new Record([
-                ['Name', 'Mark Ready'],
+                ['Name', Action.ValidActions.MARK_READY],
                 ['ExtraChecksNeeded', true]]));
             records.push(new Record([
-                ['Name', 'Schedule'],
+                ['Name', Action.ValidActions.SCHEDULE],
                 ['ExtraChecksNeeded', false]]));
             records.push(new Record([
-                ['Name', 'Complete'],
+                ['Name', Action.ValidActions.COMPLETE],
                 ['ExtraChecksNeeded', false]]));
             records.push(new Record([
-                ['Name', 'Pass'],
+                ['Name', Action.ValidActions.PASS],
                 ['ExtraChecksNeeded', false]]));
             records.push(new Record([
-                ['Name', 'Fail'],
+                ['Name', Action.ValidActions.FAIL],
                 ['ExtraChecksNeeded', false]]));
             records.push(new Record([
-                ['Name', 'Accept'],
+                ['Name', Action.ValidActions.ACCEPT],
                 ['ExtraChecksNeeded', true]]));
             records.push(new Record([
-                ['Name', 'Reject'],
+                ['Name', Action.ValidActions.REJECT],
                 ['ExtraChecksNeeded', false]]));
             records.push(new Record([
-                ['Name', 'Kill'],
+                ['Name', Action.ValidActions.KILL],
                 ['ExtraChecksNeeded', false]]));
             records.push(new Record([
-                ['Name', 'Hold'],
+                ['Name', Action.ValidActions.HOLD],
                 ['ExtraChecksNeeded', false]]));
             records.push(new Record([
-                ['Name', 'Block'],
+                ['Name', Action.ValidActions.BLOCK],
                 ['ExtraChecksNeeded', false]]));
             records.push(new Record([
-                ['Name', 'Mark Unready'],
+                ['Name', Action.ValidActions.MARK_UNREADY],
                 ['ExtraChecksNeeded', false]]));
             records.push(new Record([
-                ['Name', 'Unschedule'],
+                ['Name', Action.ValidActions.UNSCHEDULE],
                 ['ExtraChecksNeeded', false]]));
             records.push(new Record([
-                ['Name', 'Unhold'],
+                ['Name', Action.ValidActions.UNHOLD],
                 ['ExtraChecksNeeded', false]]));
             records.push(new Record([
-                ['Name', 'Unblock'],
+                ['Name', Action.ValidActions.UNBLOCK],
                 ['ExtraChecksNeeded', false]]));
             records.push(new Record([
-                ['Name', 'Reveive'],
+                ['Name', Action.ValidActions.REVIVE],
                 ['ExtraChecksNeeded', false]]));
             records.push(new Record([
-                ['Name', 'Deactivate'],
+                ['Name', Action.ValidActions.DEACTIVATE],
                 ['ExtraChecksNeeded', false]]));
             return records;
         }
@@ -515,120 +515,252 @@ class Record {
 
         // All Transitions starting from the Added state...
         records.push(new Record([
-            ['StartPath', 'Added-Mark Ready'],
-            ['EndState', 'Ready']]));
+            ['StartPath', 
+                State.ValidStates.ADDED 
+                + '-' 
+                + Action.ValidActions.MARK_READY 
+            ],
+            ['EndState', State.ValidStates.READY]]));
         records.push(new Record([
-            ['StartPath', 'Added-Block'],
-            ['EndState', 'Blocked']]));
+            ['StartPath', 
+                State.ValidStates.ADDED  
+                + '-' 
+                + Action.ValidActions.BLOCK 
+            ],
+            ['EndState', State.ValidStates.BLOCKED]]));
         records.push(new Record([
-            ['StartPath', 'Added-Kill'],
-            ['EndState', 'Dead']]));
+            ['StartPath', 
+                State.ValidStates.ADDED  
+                + '-' 
+                + Action.ValidActions.KILL 
+            ],
+            ['EndState', State.ValidStates.DEAD]]));
         records.push(new Record([
-            ['StartPath', 'Added-Hold'],
-            ['EndState', 'On Hold']]));
+            ['StartPath',  
+                State.ValidStates.ADDED  
+                + '-' 
+                + Action.ValidActions.HOLD 
+            ],
+            ['EndState', State.ValidStates.ONHOLD]]));
 
          // All Transitions starting from the Ready state...
          records.push(new Record([
-            ['StartPath', 'Ready-Mark Unready'],
-            ['EndState', 'Added']]));
+            ['StartPath',  
+                State.ValidStates.READY  
+                + '-' 
+                + Action.ValidActions.MARK_UNREADY 
+            ],
+            ['EndState', State.ValidStates.ADDED]]));
         records.push(new Record([
-            ['StartPath', 'Ready-Schedule'],
-            ['EndState', 'To Do']]));
+            ['StartPath',  
+                State.ValidStates.READY + '-' 
+                + Action.ValidActions.SCHEDULE 
+            ],
+            ['EndState', State.ValidStates.TODO]]));
         records.push(new Record([
-            ['StartPath', 'Ready-Block'],
-            ['EndState', 'Blocked']]));
+            ['StartPath',  
+                State.ValidStates.READY  
+                + '-' 
+                + Action.ValidActions.BLOCK 
+            ],
+            ['EndState', State.ValidStates.BLOCKED]]));
         records.push(new Record([
-            ['StartPath', 'Ready-Kill'],
-            ['EndState', 'Dead']]));
+            ['StartPath',  
+                State.ValidStates.READY  
+                + '-' 
+                + Action.ValidActions.KILL 
+            ],
+            ['EndState', State.ValidStates.DEAD]]));
         records.push(new Record([
-            ['StartPath', 'Ready-Hold'],
-            ['EndState', 'On Hold']]));
+            ['StartPath',  
+                State.ValidStates.READY  
+                + '-' 
+                + Action.ValidActions.HOLD 
+            ],
+            ['EndState', State.ValidStates.ONHOLD]]));
 
           // All Transitions starting from the To Do state...
           records.push(new Record([
-            ['StartPath', 'To Do-Unschedule'],
-            ['EndState', 'Ready']]));
+            ['StartPath',  
+                State.ValidStates.TODO  
+                + '-' 
+                + Action.ValidActions.UNSCHEDULE 
+            ],
+            ['EndState', State.ValidStates.READY]]));
         records.push(new Record([
-            ['StartPath', 'To Do-Activate'],
-            ['EndState', 'Doing']]));
+            ['StartPath',  
+                State.ValidStates.TODO  
+                + '-' 
+                + Action.ValidActions.ACCEPTED 
+            ],
+            ['EndState', State.ValidStates.DOING]]));
         records.push(new Record([
-            ['StartPath', 'To Do-Block'],
-            ['EndState', 'Blocked']]));
+            ['StartPath',  
+                State.ValidStates.TODO  
+                + '-' 
+                + Action.ValidActions.BLOCK 
+            ],
+            ['EndState', State.ValidStates.BLOCKED]]));
         records.push(new Record([
-            ['StartPath', 'To Do-Kill'],
-            ['EndState', 'Dead']]));
+            ['StartPath',  
+                State.ValidStates.TODO  
+                + '-' 
+                + Action.ValidActions.KILL 
+            ],
+            ['EndState', State.ValidStates.DEAD]]));
         records.push(new Record([
-            ['StartPath', 'To Do-Hold'],
-            ['EndState', 'On Hold']]));
+            ['StartPath',  
+                State.ValidStates.TODO  
+                + '-' 
+                + Action.ValidActions.HOLD 
+            ],
+            ['EndState', State.ValidStates.ONHOLD]]));
         records.push(new Record([
-            ['StartPath', 'To Do-Mark Unready'],
-            ['EndState', 'Added']]));
+            ['StartPath',  
+                State.ValidStates.TODO  
+                + '-' 
+                + Action.ValidActions.MARK_UNREADY 
+            ],
+            ['EndState', State.ValidStates.ADDED]]));
 
          // All Transitions starting from the Doing state...
          records.push(new Record([
-            ['StartPath', 'Doing-Deactivate'],
-            ['EndState', 'To Do']]));
+            ['StartPath',  
+                State.ValidStates.DOING  
+                + '-' 
+                + Action.ValidActions.DEACTIVATE 
+            ],
+            ['EndState', State.ValidStates.TODO]]));
         records.push(new Record([
-            ['StartPath', 'Doing-Complete'],
-            ['EndState', 'Done']]));
+            ['StartPath',  
+                State.ValidStates.DOING  
+                + '-' 
+                + Action.ValidActions.COMPLETE 
+            ],
+            ['EndState', State.ValidStates.DONE]]));
         records.push(new Record([
-            ['StartPath', 'Doing-Block'],
-            ['EndState', 'Blocked']]));
+            ['StartPath',  
+                State.ValidStates.DOING  
+                + '-' 
+                + Action.ValidActions.BLOCK 
+            ],
+            ['EndState', State.ValidStates.BLOCKED]]));
         records.push(new Record([
-            ['StartPath', 'Doing-Kill'],
-            ['EndState', 'Dead']]));
+            ['StartPath',  
+                State.ValidStates.DOING  
+                + '-' 
+                + Action.ValidActions.KILL 
+            ],
+            ['EndState', State.ValidStates.DEAD]]));
         records.push(new Record([
-            ['StartPath', 'Doing-Hold'],
-            ['EndState', 'On Hold']]));
+            ['StartPath',  
+                State.ValidStates.DOING  
+                + '-' 
+                + Action.ValidActions.HOLD 
+            ],
+            ['EndState', State.ValidStates.ONHOLD]]));
         records.push(new Record([
-            ['StartPath', 'Doing-Mark Unready'],
-            ['EndState', 'Added']]));
+            ['StartPath',  
+                State.ValidStates.DOING  
+                + '-' 
+                + Action.ValidActions.MARK_UNREADY 
+            ],
+            ['EndState', State.ValidStates.ADDED]]));
         records.push(new Record([
-            ['StartPath', 'Doing-Unschedule'],
-            ['EndState', 'Ready']]));
+            ['StartPath',  
+                State.ValidStates.DOING  
+                + '-' 
+                + Action.ValidActions.UNSCHEDULE 
+            ],
+            ['EndState', State.ValidStates.READY]]));
             
           // All Transitions starting from the Done state...
           records.push(new Record([
-            ['StartPath', 'Done-Pass'],
-            ['EndState', 'Tested']]));
+            ['StartPath',  
+                State.ValidStates.DONE  
+                + '-' 
+                + Action.ValidActions.PASS 
+            ],
+            ['EndState', State.ValidStates.TESTED]]));
         records.push(new Record([
-            ['StartPath', 'Done-Fail'],
-            ['EndState', 'To Do']]));
+            ['StartPath',  
+                State.ValidStates.DONE  
+                + '-' 
+                + Action.ValidActions.FAIL 
+            ],
+            ['EndState', State.ValidStates.TODO]]));
 
           // All Transitions starting from the Tested state...
           records.push(new Record([
-            ['StartPath', 'Tested-Accept'],
-            ['EndState', 'Accepted']]));
+            ['StartPath',  
+                State.ValidStates.TESTED  
+                + '-' 
+                + Action.ValidActions.ACCEPT 
+            ],
+            ['EndState', State.ValidStates.ACCEPTED]]));
         records.push(new Record([
-            ['StartPath', 'Tested-Reject'],
-            ['EndState', 'To Do']]));
+            ['StartPath',  
+                State.ValidStates.TESTED  
+                + '-' 
+                + Action.ValidActions.REJECT 
+            ],
+            ['EndState', State.ValidStates.TODO]]));
         
           // All Transitions starting from the Blocked state...
           records.push(new Record([
-            ['StartPath', 'Blocked-Unblock'],
-            ['EndState', 'Previous']]));
+            ['StartPath',  
+                State.ValidStates.BLOCKED  
+                + '-' 
+                + Action.ValidActions.UNBLOCK 
+            ],
+            ['EndState', State.ValidStates.PREVIOUS]]));
         records.push(new Record([
-            ['StartPath', 'Blocked-Kill'],
-            ['EndState', 'Dead']]));
+            ['StartPath',  
+                State.ValidStates.BLOCKED  
+                + '-' 
+                + Action.ValidActions.KILL 
+            ],
+            ['EndState', State.ValidStates.DEAD]]));
         records.push(new Record([
-            ['StartPath', 'Blocked-Hold'],
-            ['EndState', 'On Hold']]));
+            ['StartPath',  
+                State.ValidStates.BLOCKED  
+                + '-' 
+                + Action.ValidActions.HOLD 
+            ],
+            ['EndState', State.ValidStates.ONHOLD]]));
 
          // All Transitions starting from the Hold state...
          records.push(new Record([
-            ['StartPath', 'Hold-Unhold'],
-            ['EndState', 'Previous']]));
+            ['StartPath',  
+                State.ValidStates.HOLD  
+                + '-' 
+                + Action.ValidActions.UNHOLD 
+            ],
+            ['EndState', State.ValidStates.PREVIOUS]]));
         records.push(new Record([
-            ['StartPath', 'Hold-Kill'],
-            ['EndState', 'Dead']]));
+            ['StartPath',  
+                State.ValidStates.HOLD  
+                + '-' 
+                + Action.ValidActions.KILL 
+            ],
+            ['EndState', State.ValidStates.DEAD 
+        ]]));
         records.push(new Record([
-            ['StartPath', 'Hold-Block'],
-            ['EndState', 'Blocked']]));
+            ['StartPath',  
+                State.ValidStates.HOLD  
+                + '-' 
+                + Action.ValidActions.BLOCK 
+            ],
+            ['EndState', State.ValidStates.BLOCKED]]));
 
          // All Transitions starting from the Done state...
          records.push(new Record([
-            ['StartPath', 'Done-Revive'],
-            ['EndState', 'Previous']]));
+            ['StartPath',  
+                State.ValidStates.DONE  
+                + '-' 
+                + Action.ValidActions.REVIVE 
+            ],
+            ['EndState', State.ValidStates.PREVIOUS]]));
 
         return records;
     }
@@ -689,8 +821,8 @@ class Record {
         records.push(new Record([
             ['Name', 'Transition'],
             ['IsTransition', true],
-            ['TransitionStartStateName', 'Added'],
-            ['TransitionActionName', 'Mark Ready']]));
+            ['TransitionStartStateName', State.ValidStates.ADDED],
+            ['TransitionActionName', Action.ValidActions.MARK_READY]]));
         records.push(new Record([
             ['Name', 'Points'],
             ['IsTransition', false]]));

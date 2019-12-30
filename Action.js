@@ -32,6 +32,26 @@ class Action extends DatabaseTable {
         'ExtraChecksNeeded'
     ]; 
 
+    static ValidActions = {
+        ADD: 'Add',
+        MARK_READY: 'Mark Ready',
+        SCHEDULE: 'Schedule',
+        COMPLETE: 'Complete',
+        PASS: 'Pass',
+        FAIL: 'Fail',
+        ACCEPT: 'Accept',
+        REJECT: 'Reject',
+        KILL: 'Kill',
+        HOLD: 'Hold',
+        BLOCK: 'Block',
+        MARK_UNREADY: 'Mark Unready',
+        UNSCHEDULE: 'Unschedule',
+        UNHOLD: 'Unhold',
+        UNBLOCK: 'Unblock',
+        REVIVE: 'Revive',
+        DEACTIVATE: 'Deactivate'
+    }
+
     /**
      * As required for all subclasses of DatabaseTable, a setter function 
      * corresponding to a column name. 
