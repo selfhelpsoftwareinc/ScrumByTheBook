@@ -24,6 +24,11 @@ class DateRange {
         this.endDate = theEndDate;
     }
 
+    /**
+     * Answer whether or not a date falls within the receiver's range
+     * @param {Date} aDate 
+     * @returns {Boolean} whether aDate falls within the range
+     */
     includes(aDate) {
         return (startDate <= aDate) &&
                 (aDate <= endDate)

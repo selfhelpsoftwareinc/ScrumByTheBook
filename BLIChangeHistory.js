@@ -54,29 +54,16 @@ class BLIChangeHistory {
     }
 
     /**
-     * Answer the most recent state, if there are any changes; otherwise
-     * answer null.
-     * @returns {State}
-     */
-    lastState() {
-        var lastChange = this.lastChange();
-        if (lastChange == null) {
-            return null
-        }
-        return lastChange.state;
-    }
-
-    /**
      * Answer whether or not the most recent state is past the "Doing" state;
      * i.e., if it is Done, Tested or Accepted.
      * @returns {Boolean}
      */
     isComplete() {
-        var lastState = this.lastState();
-        if (lastState == null) {
-            return false;
+        var lastChange = this.lastChange();
+        if (lastChange == null) {
+            return false
         }
-        return lastState.isComplete();
+        return lastChange.isComplete();
     }
 
     /**
@@ -88,5 +75,34 @@ class BLIChangeHistory {
             return this.points;
         }
         return 0;
+    }
+
+    /**
+     * Loop backwards through the changes to find the 'Done' state, then
+     * answer whether we achieved that state during aDateRange.
+     * @param {DateRange} aDateRange 
+     * @returns {Boolean} whether we became complete during aDateRange
+     */
+    becameCompleteDuring(aDateRange) {
+        for (var i = changes.length - 1; i >= 0; i--) {
+            if (changes[i].becameDoneDuring(aDateRange)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Answer the number of points that were done during a time period 
+     * (e.g., during a Sprint).  Only answer points if we achieved
+     * the 'Done' state during the date range.
+     * @param {DateRange} aDateRange 
+     * @returns {Number} the number of points completed during the range.
+     */
+    pointsCompleteDuring(aDateRange) {
+        if (!this.becameCompleteDuring(aDateRange)) {
+            return 0;
+        }
+        return this.points;
     }
 }

@@ -339,7 +339,7 @@ class BacklogItem extends DatabaseTable {
     /**
      * Answer whether or not this BacklogItem is at the bottom of the
      * tree (i.e., has no children).
-     * @returns {Boolean}
+     * @returns {Boolean} whether the item is a leaf (without children)
      */
     isLeaf() {
         return this.children.size = 0
@@ -350,7 +350,7 @@ class BacklogItem extends DatabaseTable {
      * A BacklogItem is complete if it is a leaf BacklogItem and it is
      * in the Done, Tested or Accepted state, or if it is a parent BacklogItem
      * all of whose children are in one of those states.
-     * @returns {Boolean}
+     * @returns {Boolean} whether the item is complete
      */
     isComplete() {
         if (this.isLeaf()) {
@@ -363,6 +363,13 @@ class BacklogItem extends DatabaseTable {
         return isComplete;
     }
 
+    /**
+     * Answer the number of points for this BacklogItem that are past the
+     * 'Doing' state: i.e., in the Done, Tested or Accepted state.  For
+     * a leaf BLI, this is straightforward.  For a parent BLI, add up all
+     * of the pointsComplete of all the children.
+     * @returns {Number} the number of points complete
+     */
     pointsComplete() {
         if (this.isLeaf()) {
             return this.history.pointsComplete();
@@ -370,6 +377,26 @@ class BacklogItem extends DatabaseTable {
         var points = 0;
         for (var child of this.children) {
             points = points + child.pointsComplete();
+        }
+        return points;
+    }
+
+    /**
+     * Answer the number of points for this BacklogItem that were marked
+     * 'Done' during a specific time period (e.g., during a Sprint).  For
+     * a leaf BLI, this is straightforward.  For a parent BLI, add up all
+     * of the points complete during the date range for all the children.
+     * @param {DateRange} aDateRange
+     * @returns {Number} the number of points complete during the range
+     */
+
+    pointsCompleteDuring(aDateRange) {
+        if (this.isLeaf()) {
+            return this.history.pointsCompleteDuring(aDateRange);
+        }
+        var points = 0;
+        for (var child of this.children) {
+            points = points + child.pointsCompleteDuring(aDateRange);
         }
         return points;
     }
