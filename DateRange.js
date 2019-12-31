@@ -85,6 +85,5 @@ class DateRange {
             (aDateRange.encompasses(this)) ||
             (this.startDate <= aDateRange.startDate && this.endDate <= aDateRange.endDate) ||
             (aDateRange.startDate <= this.startDate && aDateRange.endDate <= this.endDate)
-
     }
 }
