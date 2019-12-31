@@ -401,5 +401,40 @@ class BacklogItem extends DatabaseTable {
         return points;
     }
 
+    /**
+     * Answer the number of points to be included in velocity
+     * calculations for this BacklogItem and any of its children.
+     * @returns {Number} the total number of points to be included
+     * in velocity calculations for this BLI and any of its children.
+     */
+    velocityPoints() {
+        if (this.isLeaf()) {
+            return this.history.velocityPoints();
+        }
+        var points = 0;
+        for (var child of this.children) {
+            points = points + child.velocityPoints();
+        }
+        return points;
+    }
+
+    /**
+     * Answer the number of points to be included in pipeline
+     * calculations (point estimates for work yet to be done) 
+     * for this BacklogItem and any of its children.
+     * @returns {Number} the total number of points to be included
+     * in pipeline calculations for this BLI and any of its children.
+     */
+    pipelinePoints() {
+        if (this.isLeaf()) {
+            return this.history.pipelinePoints();
+        }
+        var points = 0;
+        for (var child of this.children) {
+            points = points + child.pipelinePoints();
+        }
+        return points;
+    }
+
 }
 

@@ -143,4 +143,23 @@ class BLIChange extends DatabaseTable {
         return aDateRange.includes(this.date);
     }
 
+    /**
+     * Answer whether or not this change should be included in
+     * velocity calculations.
+     * @returns {Boolean} whether this change should be included
+     * in velocity calculations
+     */
+    includeInVelocity() {
+        return this.state.includeInVelocity;
+    }
+
+    /**
+     * Answer whether or not this change should be included in
+     * pipeline calculations (point estimates of what is left to do).
+     * @returns {Boolean} whether this change should be included
+     * in pipeline calculations
+     */
+    includeInPipeline() {
+        return this.state.includeInPipeline;
+    }
 }

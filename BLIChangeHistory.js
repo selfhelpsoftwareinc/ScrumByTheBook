@@ -105,4 +105,32 @@ class BLIChangeHistory {
         }
         return this.points;
     }
+
+    /** 
+     * Answer the number of points of this change history if the
+     * last change should be included in velocity calculations; otherwise
+     * answer zero.
+     * @returns {Number} the number of points to be included in 
+     * velocity calculations
+     */
+    velocityPoints() {
+        if (this.lastChange().includeInVelocity) {
+            return this.points;
+        }
+        return 0;
+    }
+
+    /** 
+     * Answer the number of points of this change history if the
+     * last change should be included in pipeline calculations; otherwise
+     * answer zero.
+     * @returns {Number} the number of points to be included in 
+     * pipeline calculations
+     */
+    pipelinePoints() {
+        if (this.lastChange().includeInPipeline) {
+            return this.points;
+        }
+        return 0;
+    }
 }
