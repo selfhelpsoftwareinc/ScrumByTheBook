@@ -1,3 +1,4 @@
+const DatabaseTable = require("./DatabaseTable.js").DatabaseTable;
 /**
  * Every BacklogItem can have 0 or more AcceptanceCriteria.
  * Each AcceptanceCriterion describes what must be done for 
@@ -118,3 +119,5 @@ class AcceptanceCriterion extends DatabaseTable {
         return this.backlogItemID;
     }
 }
+
+module.exports = {AcceptanceCriterion}

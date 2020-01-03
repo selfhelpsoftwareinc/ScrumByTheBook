@@ -1,3 +1,4 @@
+const DatabaseTable = require("./DatabaseTable.js").DatabaseTable;
 /**
  * The Assignee class represents the 0 or more persons to whom a BacklogItem 
  * can be assinged.  Zero, because the project may be so small that the user
@@ -146,3 +147,5 @@ class Assignee extends DatabaseTable {
         this.backlogItems.push(aBacklogItem);
     }
 }
+
+module.exports = {Assignee}

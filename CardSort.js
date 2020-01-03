@@ -1,3 +1,4 @@
+const DatabaseTable = require("./DatabaseTable.js").DatabaseTable;
 /**
  * A CardSort represents ways in which to sort cards in Card View.
  * These will be rendered as menu choices for ways in which to 
@@ -123,3 +124,5 @@ class CardSort extends DatabaseTable {
         this.transition = allTransitions.get(key);
     }
 }
+
+module.exports = {CardSort}

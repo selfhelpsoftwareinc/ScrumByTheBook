@@ -1,3 +1,4 @@
+const DatabaseTable = require("./DatabaseTable.js").DatabaseTable;
 /**
  * A GroupCriterion represents one way in which to group BacklogItems
  * in Card View.  A collection of GroupCriteria together will
@@ -139,3 +140,5 @@ class GroupCriterion extends DatabaseTable {
         this.stateName = aString;
     }
 }
+
+module.exports = {GroupCriterion}
