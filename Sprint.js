@@ -1,3 +1,4 @@
+const DatabaseTable = require("./DatabaseTable.js").DatabaseTable;
 /**
  * A Sprint represents a fixed-length period of time during which a
  * potentiatlly-shippable deliverable is developed.  During Sprint 
@@ -89,3 +90,5 @@ class Sprint extends DatabaseTable {
         this.backlogItems.push(aBacklogItem);
     }
 }
+
+module.exports = {Sprint}

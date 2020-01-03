@@ -1,3 +1,5 @@
+const DatabaseTable = require("./DatabaseTable.js").DatabaseTable;
+const Assignee = require("./Assignee.js").Assignee;
 /**
  * The AssigneeToBLIMapping class reads from the database, and maintains,
  * two static Maps: 1) the assigneeToBLIMap that stores, for each AssgineeID,
@@ -173,3 +175,5 @@ class AssigneeToBLIMapping extends DatabaseTable {
     }
 
 }
+
+module.exports = {AssigneeToBLIMapping}

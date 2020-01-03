@@ -1,3 +1,4 @@
+const DatabaseTable = require("./DatabaseTable.js").DatabaseTable;
 /**
  * A Transition represents a valid change of State for a BacklogItem.
  * It is defined by its start path and its end state.  The start path 
@@ -65,3 +66,4 @@ class Transition extends DatabaseTable {
         this.endState = State.whereKeyIs(endStateName);
     }
 }
+module.exports = {Transition}

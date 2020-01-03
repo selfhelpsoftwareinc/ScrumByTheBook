@@ -1,3 +1,8 @@
+const DatabaseTable = require("./DatabaseTable.js").DatabaseTable;
+const AcceptanceCriterion = require("./AcceptanceCriterion.js").AcceptanceCriterion;
+const BLIChangeHistory = require("./BLIChangeHistory.js").BLIChangeHistory;
+const SprintToBLIMapping = require("./SprintToBLIMapping").SprintToBLIMapping;
+const AssigneeToBLIMapping = require("./AssigneeToBLIMapping.js").AssigneeToBLIMapping;
 /**
  * A BacklogItem represents *anything* that needs to be done on a project,
  * at any level of abstraction or detail.  It can represent anything from
@@ -338,3 +343,4 @@ class BacklogItem extends DatabaseTable {
 
 }
 
+module.exports = {BacklogItem}

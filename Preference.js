@@ -1,3 +1,4 @@
+const DatabaseTable = require("./DatabaseTable.js").DatabaseTable;
 /**
  * The Preference class provides a framework for storing and retrieving 
  * user preferences to/from the database.  These include setting like
@@ -58,3 +59,5 @@ class Preference extends DatabaseTable {
         this.preference = anObject;
     }
 }
+
+module.exports = {Preference}

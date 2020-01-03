@@ -1,3 +1,4 @@
+BLIChange = require("./BLIChange.js").BLIChange;
 /**
  * The BLIChangeHistory holds a collection of BLIChanges for each 
  * BacklogItem. It also stores the number of points (estimated level
@@ -41,3 +42,4 @@ class BLIChangeHistory {
     //     this.points = aNumber;
     // }
 }
+module.exports = {BLIChangeHistory}

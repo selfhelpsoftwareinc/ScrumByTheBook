@@ -1,3 +1,5 @@
+DatabaseTable = require("./DatabaseTable.js").DatabaseTable;
+State = require ("./State.js").State;
 /**
  * Each BLIChange stores state change information for a single change of
  * state for a BacklogItem.  In particular, it stores the name of the new
@@ -111,3 +113,5 @@ class BLIChange extends DatabaseTable {
     }
 
 }
+
+module.exports = {BLIChange}

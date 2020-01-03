@@ -1,3 +1,4 @@
+const Database = require("./Database.js").Database;
 /**
  * The superclass of all ScrumByTheBook classes that will be stored in the database.
  * Allows for the generic retrieval and storage of instances from/to the database,
@@ -156,3 +157,5 @@ class DatabaseTable {
     }
 
 }
+
+module.exports = {DatabaseTable}

@@ -1,3 +1,4 @@
+const Record = require("./Record.js").Record;
 /**
  * The Database class is, for now, a proxy for a real database interface.  It
  * retrieves all the records for any subclass of DatabaseTable, then instantiates
@@ -95,3 +96,4 @@ class Database {
         return setterFunction;
     }
 }
+module.exports = {Database}

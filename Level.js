@@ -1,3 +1,4 @@
+const DatabaseTable = require("./DatabaseTable.js").DatabaseTable;
 /**
  * A Level is how deeply a BacklogItem is nested from the top
  * of the hierarchy.  Each level of depth can be named.  E.g., 
@@ -76,3 +77,5 @@ class Level extends DatabaseTable {
     }
 
 }
+
+module.exports = {Level}
