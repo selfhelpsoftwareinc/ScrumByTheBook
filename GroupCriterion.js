@@ -66,7 +66,7 @@ class GroupCriterion extends DatabaseTable {
         'IsChange', 
         'LimitValuesToSprint', 
         'Level', 
-        'State'
+        'StateName'
     ]; 
 
     /**
@@ -136,7 +136,7 @@ class GroupCriterion extends DatabaseTable {
      * @todo comment this when we remember what it is
      * @param {String} aString 
      */
-    setState(aString) {
+    setStateName(aString) {
         this.stateName = aString;
     }
 }
