@@ -37,7 +37,7 @@ class Database {
      * @param {String} aColumnName The name of the column in which to
      * search for the value.
      * @param {Object} aValue The value for which to search.
-     * @returns a Map of all the instances matching the criteria, keyed 
+     * @returns {Map of DatabaseTable}a Map of all the instances matching the criteria, keyed 
      * by each instance's value of the class' keyColumn.
      * @todo if loaded, should we perhaps also search the records already
      * loaded instead of hitting the database for all records?  The issue
