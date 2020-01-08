@@ -75,7 +75,7 @@ function testRecord(record) {
 }
 
 // test suite
-describe(recordClassName + ' records', function () {
+describe.skip(recordClassName + ' records', function () {
     before(function(){
         foundKeys = [];
     });
