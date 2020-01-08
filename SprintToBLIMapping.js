@@ -94,10 +94,10 @@ class SprintToBLIMapping extends DatabaseTable {
             sprintItems.push(eachSprintID);
             this.bliToSprintMap.set(eachBacklogItemID, sprintItems);
         }
-        console.log("sprintToBLIMap...");
-        console.log(this.sprintToBLIMap);
-        console.log("bliToSprintMap...");
-        console.log(this.bliToSprintMap);
+        // console.log("sprintToBLIMap...");
+        // console.log(this.sprintToBLIMap);
+        // console.log("bliToSprintMap...");
+        // console.log(this.bliToSprintMap);
     }
 
     /**
