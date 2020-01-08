@@ -1,4 +1,6 @@
 const DatabaseTable = require("./DatabaseTable.js").DatabaseTable;
+const State = require("./State.js").State;
+const Action = require("./Action.js").Action;
 /**
  * A Transition represents a valid change of State for a BacklogItem.
  * It is defined by its start path and its end state.  The start path 
