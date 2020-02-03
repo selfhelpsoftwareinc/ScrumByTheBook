@@ -341,6 +341,106 @@ class BacklogItem extends DatabaseTable {
         return this.id;
     }
 
+    /**
+     * Answer whether or not this BacklogItem is at the bottom of the
+     * tree (i.e., has no children).
+     * @returns {Boolean} whether the item is a leaf (without children)
+     */
+    isLeaf() {
+        return this.children.size = 0
+    }
+
+    /**
+     * Answer whether or not this BacklogItem is past the 'Doing' state.
+     * A BacklogItem is complete if it is a leaf BacklogItem and it is
+     * in the Done, Tested or Accepted state, or if it is a parent BacklogItem
+     * all of whose children are in one of those states.
+     * @returns {Boolean} whether the item is complete
+     */
+    isComplete() {
+        if (this.isLeaf()) {
+            return this.history.isComplete();
+        }
+        var isComplete = true;
+        for (var child of this.children) {
+            isComplete = isComplete && child.isComplete();
+        }
+        return isComplete;
+    }
+
+    /**
+     * Answer the number of points for this BacklogItem that are past the
+     * 'Doing' state: i.e., in the Done, Tested or Accepted state.  For
+     * a leaf BLI, this is straightforward.  For a parent BLI, add up all
+     * of the pointsComplete of all the children.
+     * @returns {Number} the number of points complete
+     */
+    pointsComplete() {
+        if (this.isLeaf()) {
+            return this.history.pointsComplete();
+        }
+        var points = 0;
+        for (var child of this.children) {
+            points = points + child.pointsComplete();
+        }
+        return points;
+    }
+
+    /**
+     * Answer the number of points for this BacklogItem that were marked
+     * 'Done' during a specific time period (e.g., during a Sprint).  For
+     * a leaf BLI, this is straightforward.  For a parent BLI, add up all
+     * of the points complete during the date range for all the children.
+     * @param {DateRange} aDateRange
+     * @returns {Number} the number of points complete during the range
+     */
+
+    pointsCompleteDuring(aDateRange) {
+        if (this.isLeaf()) {
+            return this.history.pointsCompleteDuring(aDateRange);
+        }
+        var points = 0;
+        for (var child of this.children) {
+            points = points + child.pointsCompleteDuring(aDateRange);
+        }
+        return points;
+    }
+
+    /**
+     * Answer the number of points to be included in velocity
+     * calculations for this BacklogItem and any of its children.
+     * @returns {Number} the total number of points to be included
+     * in velocity calculations for this BLI and any of its children.
+     */
+    velocityPoints() {
+        if (this.isLeaf()) {
+            return this.history.velocityPoints();
+        }
+        var points = 0;
+        for (var child of this.children) {
+            points = points + child.velocityPoints();
+        }
+        return points;
+    }
+
+    /**
+     * Answer the number of points to be included in pipeline
+     * calculations (point estimates for work yet to be done) 
+     * for this BacklogItem and any of its children.
+     * @returns {Number} the total number of points to be included
+     * in pipeline calculations for this BLI and any of its children.
+     */
+    pipelinePoints() {
+        if (this.isLeaf()) {
+            return this.history.pipelinePoints();
+        }
+        var points = 0;
+        for (var child of this.children) {
+            points = points + child.pipelinePoints();
+        }
+        return points;
+    }
+
 }
 
 module.exports = {BacklogItem}

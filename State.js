@@ -60,6 +60,20 @@ class State extends DatabaseTable {
         'IncludeInVelocity'
     ];
 
+    static ValidStates = {
+        DEAD: 'Dead',
+        BLOCKED: 'Blocked',
+        ONHOLD: 'On Hold',
+        ADDED: 'Added',
+        READY: 'Ready',
+        TODO: 'To Do',
+        DOING: 'Doing',
+        DONE: 'Done',
+        TESTED: 'Tested',
+        ACCEPTED: 'Accepted',
+        PREVIOUS: 'Previous'
+    }
+
     /**
      * As required for all subclasses of DatabaseTable, a setter function 
      * corresponding to a column name. 
@@ -122,6 +136,27 @@ class State extends DatabaseTable {
         this.includeInVelocity = aBoolean;
     }
 
+    /**
+     * Answer whether or not this state constitutes a completed state
+     * for a BacklogItem.  A BacklogItem is complete if its state is
+     * Done, Tested, or Accepted.
+     * @returns {Boolean} whether this state is beyond the 'Doing' state
+     */
+    isComplete() {
+        return [
+            this.prototype.ValidStates.DONE,
+            this.prototype.ValidStates.ACCEPTED,
+            this.prototype.ValidStates.TESTED
+        ].includes(this.name);
+    }
+
+    /**
+     * Answer whether or not this is in the 'Done' state.
+     * @returns {Boolean} whether this state is in the 'Done' state
+     */
+    isDone() {
+        return this.name == this.prototype.ValidStates.DONE;
+    }
 }
 
 module.exports = {State}

@@ -65,10 +65,15 @@ class BLIChange extends DatabaseTable {
      * corresponding to a column name. 
      * In this case, set the date instance variable from the receiver's
      * Date column in the database.
-     * @param {Date} aDate The date at which the change occurred.
+     * @param {String} aString The date at which the change occurred, stored
+     * as 'YYYY-MM-DD'
      */
-    setDate(aDate) {
-        this.date = aDate;
+    setDate(aString) {
+        var parts = aString.split('-');
+        var day = parts.pop();
+        var month = parts.pop();
+        var year = parts.pop();
+        this.date = aDate(year, month, day);
     }
 
     /**
@@ -112,6 +117,53 @@ class BLIChange extends DatabaseTable {
         return this.backlogItemID;
     }
 
+    /**
+     * Answer whether or not the state of this change is beyond the 'Doing'
+     * state: i.e., Done, Tested or Accepted.
+     * @returns {Boolean} whether the state is complete
+     */
+    isComplete() {
+        return this.state.isComplete();
+    }
+
+    /**
+     * Answer whether or not the state of this change is 'Done'
+     * @returns {Boolean} whether the state is done
+     */
+    isDone() {
+        return this.state.isDone();
+    }
+
+    /**
+     * Answer whether or not the state of this change was set to the 'Done'
+     * state during a particular DateRange.
+     * @param {DateRange} aDateRange
+     * @returns {Boolean} whether the change was set to 'Done' during aDateRange
+     */
+    becameDoneDuring(aDateRange) {
+        if (!this.isDone()) {return false}
+        return aDateRange.includes(this.date);
+    }
+
+    /**
+     * Answer whether or not this change should be included in
+     * velocity calculations.
+     * @returns {Boolean} whether this change should be included
+     * in velocity calculations
+     */
+    includeInVelocity() {
+        return this.state.includeInVelocity;
+    }
+
+    /**
+     * Answer whether or not this change should be included in
+     * pipeline calculations (point estimates of what is left to do).
+     * @returns {Boolean} whether this change should be included
+     * in pipeline calculations
+     */
+    includeInPipeline() {
+        return this.state.includeInPipeline;
+    }
 }
 
 module.exports = {BLIChange}
