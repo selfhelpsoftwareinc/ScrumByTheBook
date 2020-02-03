@@ -1,3 +1,4 @@
+const DatabaseTable = require("./DatabaseTable.js").DatabaseTable;
 /**
  * An Action is a defined operation that can be performed on
  * a BacklogItem to change its State.  E.g., a BacklogItem can 
@@ -75,3 +76,5 @@ class Action extends DatabaseTable {
         this.extraChecksNeeded = aBoolean;
     }
 }
+
+module.exports = {Action}

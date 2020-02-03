@@ -1,3 +1,4 @@
+const DatabaseTable = require("./DatabaseTable.js").DatabaseTable;
 /**
  * The SystemContant class stores to and retrieves from the database 
  * all values maintained by the system, primarily the last-used
@@ -60,3 +61,4 @@ class SystemConstant extends DatabaseTable {
     }
 
 }
+module.exports = {SystemConstant}

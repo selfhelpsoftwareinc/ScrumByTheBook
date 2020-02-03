@@ -1,3 +1,7 @@
+const DatabaseTable = require("./DatabaseTable.js").DatabaseTable;
+const BacklogItem = require("./BacklogItem.js").BacklogItem;
+const Sprint = require("./Sprint.js").Sprint;
+
 /**
  * The SprintToBLIMapping class reads from the database, and maintains,
  * two static Maps: 1) the sprintToBLIMap that stores, for each SprintID,
@@ -90,10 +94,10 @@ class SprintToBLIMapping extends DatabaseTable {
             sprintItems.push(eachSprintID);
             this.bliToSprintMap.set(eachBacklogItemID, sprintItems);
         }
-        console.log("sprintToBLIMap...");
-        console.log(this.sprintToBLIMap);
-        console.log("bliToSprintMap...");
-        console.log(this.bliToSprintMap);
+        // console.log("sprintToBLIMap...");
+        // console.log(this.sprintToBLIMap);
+        // console.log("bliToSprintMap...");
+        // console.log(this.bliToSprintMap);
     }
 
     /**
@@ -171,3 +175,4 @@ class SprintToBLIMapping extends DatabaseTable {
     }
 
 }
+module.exports = {SprintToBLIMapping}

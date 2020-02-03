@@ -10,7 +10,7 @@
  * 
  * @todo Retrieve records from an actual database
  */
-class Record {
+ class Record {
     /**
      * @type {Map} all of the values for a single record of a table,
      * keyed by column name.
@@ -38,7 +38,7 @@ class Record {
      * @todo Retrieve records using SQL, rather than constructing a
      * static method name based on the tableName and getting dummy 
      * records.
-     */
+     */ 
     static recordsFor(tableName) {
         var recordsFunction = this.allRecordsFunctionFor(tableName);
         if (recordsFunction == undefined) {
@@ -885,5 +885,19 @@ class Record {
     at(aColumnName) {
         return this.values.get(aColumnName);
     }
+    
+    /**
+     * Collect and answer the column names of this record; which are all
+     * of the keys of the map of values.
+     * @returns {Array of Strings} The names of all of the columns.
+     */
+    columnNames() {
+        var columnNames = [];
+        for (var key of this.values.keys()) {
+            columnNames.push(key);
+        }
+        return columnNames;
+    }
 
 }
+module.exports = {Record}

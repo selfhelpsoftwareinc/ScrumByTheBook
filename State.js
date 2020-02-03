@@ -1,3 +1,4 @@
+DatabaseTable = require("./DatabaseTable.js").DatabaseTable;
 /**
  * The State class represents any of several states that a BacklogItem can
  * be in at a given time.  E.g., it can be newly added to the project ('Added'),
@@ -156,5 +157,6 @@ class State extends DatabaseTable {
     isDone() {
         return this.name == this.prototype.ValidStates.DONE;
     }
-
 }
+
+module.exports = {State}

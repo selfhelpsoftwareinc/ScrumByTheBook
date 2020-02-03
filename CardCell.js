@@ -1,3 +1,4 @@
+const DatabaseTable = require("./DatabaseTable.js").DatabaseTable;
 /**
  * A CardCell defines one segment of how a component of a BacklogItem
  * is displayed in Card View.  Its location (lineNumber x cellNumber)
@@ -111,3 +112,5 @@ class CardCell extends DatabaseTable {
         this.name = aString;
     }
 }
+
+module.exports = {CardCell}

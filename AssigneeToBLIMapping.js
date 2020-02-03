@@ -1,3 +1,5 @@
+const DatabaseTable = require("./DatabaseTable.js").DatabaseTable;
+const Assignee = require("./Assignee.js").Assignee;
 /**
  * The AssigneeToBLIMapping class reads from the database, and maintains,
  * two static Maps: 1) the assigneeToBLIMap that stores, for each AssgineeID,
@@ -92,10 +94,10 @@ class AssigneeToBLIMapping extends DatabaseTable {
             assigneeItems.push(eachAssigneeID);  // add the Assignee ID to the array
             this.bliToAssigneeMap.set(eachBacklogItemID, assigneeItems);
         }
-        console.log("assigneeToBLIMap...");
-        console.log(this.assigneeToBLIMap);
-        console.log("bliToAssigneeMap...");
-        console.log(this.bliToAssigneeMap);
+        // console.log("assigneeToBLIMap...");
+        // console.log(this.assigneeToBLIMap);
+        // console.log("bliToAssigneeMap...");
+        // console.log(this.bliToAssigneeMap);
     }
     /**
      * For each of the BacklogItemIDs stored in the assigneeToBLIMap for the
@@ -173,3 +175,5 @@ class AssigneeToBLIMapping extends DatabaseTable {
     }
 
 }
+
+module.exports = {AssigneeToBLIMapping}
