@@ -753,6 +753,19 @@
     at(aColumnName) {
         return this.values.get(aColumnName);
     }
+    
+    /**
+     * Collect and answer the column names of this record; which are all
+     * of the keys of the map of values.
+     * @returns {Array of Strings} The names of all of the columns.
+     */
+    columnNames() {
+        var columnNames = [];
+        for (var key of this.values.keys()) {
+            columnNames.push(key);
+        }
+        return columnNames;
+    }
 
 }
 module.exports = {Record}

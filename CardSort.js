@@ -1,4 +1,5 @@
 const DatabaseTable = require("./DatabaseTable.js").DatabaseTable;
+const Transition = require("./Transition.js").Transition;
 /**
  * A CardSort represents ways in which to sort cards in Card View.
  * These will be rendered as menu choices for ways in which to 
